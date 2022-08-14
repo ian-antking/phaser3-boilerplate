@@ -5,6 +5,6 @@ import 'phaser'
 export default {
   type: AUTO,
   parent: 'phaser-example',
-  width: 900,
+  width: 1200,
   height: 600,
 }
