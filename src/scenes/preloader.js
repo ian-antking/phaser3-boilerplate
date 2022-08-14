@@ -1,19 +1,10 @@
 import Phaser from 'phaser'
 
+import phaserLogo from '../../assets/logo.png'
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader')
-  }
-
-  init() {
-    this.readyCount = 0
-  }
-
-  ready() {
-    this.readyCount += 1
-    if (this.readyCount >= 2) {
-      this.scene.start('Title')
-    }
   }
 
   preload() {
@@ -76,10 +67,12 @@ export default class PreloaderScene extends Phaser.Scene {
       loadingText.destroy()
       percentText.destroy()
       assetText.destroy()
-      this.ready()
     })
 
-    this.timedEvent = this.time.delayedCall(1000, this.ready, [], this)
-    this.load.image('logo', '../../assets/logo.png')
+    this.load.image('logo', phaserLogo)
+  }
+
+  create() {
+    this.scene.start('Title')
   }
 }
